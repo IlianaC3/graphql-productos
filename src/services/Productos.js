@@ -1,4 +1,4 @@
-const ProductosDB = require('../db/operaciones/Productos')
+const ProductosDB = require('../db/query/Productos')
 const Producto = new ProductosDB();
 
 class Contenedor {

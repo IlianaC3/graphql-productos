@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const FrontClass = require('../controllers/Front')
-const PublicAuth  = require('../controllers/auth');
+const FrontClass = require('../controllers/REST/Front')
+const PublicAuth  = require('../controllers/authController');
 const publicAuthorization = new PublicAuth();
 const FrontController = new FrontClass();
 

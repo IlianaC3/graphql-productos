@@ -1,9 +1,10 @@
-const ChatDB = require('../db/operaciones/Chat');
+const ChatDB = require('../db/query/Chat');
 const Messages = require('../operations/Mesages')
 const ChatClass = new ChatDB();
 const Msg = new Messages();
 const parseJSON = obj => JSON.parse(JSON.stringify(obj))
 const logger = require('../operations/logger')
+const ChatsNorm = require('../operations/normalizer')
 
 class Contenedor {
     constructor() {
@@ -62,8 +63,9 @@ class Contenedor {
 	async getAll() {
 		try {
             let docs = await ChatClass.GetMensajes();
+            console.log(docs)
             docs = docs.map(parseJSON)
-            return docs
+            return ChatsNorm(docs)
         } catch (error) {
             logger.error(await Msg.GenerateMessage('Mensaje', 'read', false, error));
             return undefined;

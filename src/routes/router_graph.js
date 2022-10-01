@@ -15,7 +15,7 @@ const FakerResolver = new FakerR();
 const InfoR = require('../controllers/Graph/Info');
 const InfoResolver = new InfoR();
 
-const schemaContenido = fs.readFileSync(path.join(__dirname, '../schemas/productos.graphql')).toString();
+const schemaContenido = fs.readFileSync(path.join(__dirname, '../db/schemas/schema.graphql')).toString();
 const schema = buildSchema(schemaContenido);
 
 const graphMiddle = graphqlHTTP({

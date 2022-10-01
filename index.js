@@ -8,13 +8,20 @@ const app = express();
 const server = http.createServer(app);
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const passport = require('./src/controllers/passport')
+const passport = require('./src/operations/passport')
 const graphQlRouter = require('./src/routes/router_graph')
 
 //Websocket
-const websocket = require('./src/controllers/websockets');
-const websocketInit = new websocket();
-websocketInit.websocketInit(server);
+const { Server: IOServer } = require("socket.io");
+const ioController = require('./src/controllers/socketController');
+const ioCont = new ioController();
+const ioServer = new IOServer(server);
+ioServer.on("connection", async (socket) => ioCont.websocketController(socket, ioServer));
+
+// //Websocket
+// const websocket = require('./src/controllers/websockets');
+// const websocketInit = new websocket();
+// websocketInit.websocketInit(server);
 
 //PUERTO
 const minimist = require('minimist');

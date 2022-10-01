@@ -3,7 +3,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'public');
 const passport = require('passport');
-const UsuariosClass = require('../controllers/Usuarios');
+const UsuariosClass = require('../controllers/REST/Usuarios');
 const UsuariosController = new UsuariosClass();
 
 app.post('/login', passport.authenticate('authentication'), UsuariosController.Login)

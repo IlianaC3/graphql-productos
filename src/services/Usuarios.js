@@ -1,4 +1,4 @@
-const UsuariosDB = require('../db/operaciones/Usuarios')
+const UsuariosDB = require('../db/query/Usuarios')
 const Usuario = new UsuariosDB();
 const bcrypt = require('bcrypt');
 const { parseJSON } = require('../operations/parseJson')
